@@ -377,6 +377,9 @@ int main(void) {
   printf ("\nElimina elemento da posicao 2 do vetor 1: \n");
   VCD_eliminaElementoDePosicaoI(vetorCompl1, 1);
   VCD_imprimeVetor(vetorCompl1);
+  
+  D_destroiComplexo(num);
+  D_destroiComplexo(produto2);
 
   printf("\n\n");
   printf("===== FIM! =====\n");
