@@ -50,4 +50,5 @@ R_Complexo_pt converteLongIntParaRacional(I_Complexo_pt iComplexo){
     Racional_pt real = converteRealEmRacional(r);
     Racional_pt imag = converteRealEmRacional(i);
     R_Complexo_pt rComplexo = R_criaComplexo(retornaNum(real), retornaDen(real), retornaNum(imag), retornaDen(imag));
+    return rComplexo;
 }
