@@ -4,14 +4,12 @@
 
 #define eps 0.00001
 
-// Definicao da struct generica 
 struct TIPADO_(Complexo_st){
     TIPO_ *real;
     TIPO_ *imag;
 };
 typedef struct TIPADO_(Complexo_st) TIPADO_(Complexo_t);
 
-// Funcao para criar um numero complexo 
 TIPADO_(Complexo_pt) TIPADO_(criaComplexo) (TIPO_ numReal, TIPO_ numImag){
     TIPADO_(Complexo_pt) numComplexo = (TIPADO_(Complexo_pt)) malloc(sizeof(TIPADO_(Complexo_t)));
     if(numComplexo == NULL){
@@ -69,7 +67,6 @@ TIPADO_(Complexo_pt) TIPADO_(copiaComplexo)(TIPADO_(Complexo_pt) numero){
     return numComplexo;
 }
 
-// Funcao que retorna o modulo de um numero complexo
 double TIPADO_(retornaMagnitude) (TIPADO_(Complexo_pt) numComplexo){
     double modulo, real, imaginario;
 
@@ -81,7 +78,6 @@ double TIPADO_(retornaMagnitude) (TIPADO_(Complexo_pt) numComplexo){
     return fabs(modulo);
 }
 
-// Funcao que retorna o angulo de um numero complexo
 double TIPADO_(retornaFase) (TIPADO_(Complexo_pt) numComplexo){
     double angulo;
 
@@ -95,11 +91,9 @@ double TIPADO_(retornaFase) (TIPADO_(Complexo_pt) numComplexo){
       else{
         return 0;
       }
-    }
-    // Utilizacao da funcao arcoseno para calculo do angulo  
+    } 
     angulo = asin(*numComplexo->imag / TIPADO_(retornaMagnitude)(numComplexo));
-    
-    // Verifica quadrante e faz conversao se necessario 
+
     if (*numComplexo->imag == 0){
       return 3.141592;
     }
@@ -113,7 +107,6 @@ double TIPADO_(retornaFase) (TIPADO_(Complexo_pt) numComplexo){
     return angulo;
 }
 
-// Verifica se a magnitude de um numero eh zero 
 int TIPADO_(verificaModuloZero) (TIPADO_(Complexo_pt) numComplexo){    
     if(TIPADO_(retornaMagnitude)(numComplexo) <= eps)
         return 1;
@@ -121,7 +114,6 @@ int TIPADO_(verificaModuloZero) (TIPADO_(Complexo_pt) numComplexo){
         return 0;
 }
 
-// Funcao que verifica se o numero complexo tem apenas a parte real
 int TIPADO_(verificaApenasReal) (TIPADO_(Complexo_pt) numComplexo){
     if(*numComplexo->imag <= eps)
         return 1;
@@ -129,7 +121,6 @@ int TIPADO_(verificaApenasReal) (TIPADO_(Complexo_pt) numComplexo){
         return 0;
 }
 
-// Funcao que verifica se o numero complexo tem apenas a parte imaginaria
 int TIPADO_(verificaApenasImaginario)(TIPADO_(Complexo_pt) numComplexo){
     if(*numComplexo->real <= eps)
         return 1;
@@ -144,7 +135,6 @@ int TIPADO_(comparaComplexos)(TIPADO_(Complexo_pt) complexo1, TIPADO_(Complexo_p
     return 0;  
 }
 
-// Funcao que compara a magnitude de dois numeros complexos 
 int TIPADO_(comparaModuloNumeros) (TIPADO_(Complexo_pt) numComplexo1, TIPADO_(Complexo_pt) numComplexo2){
     long double modulo1, modulo2;
     modulo1 = TIPADO_(retornaMagnitude)(numComplexo1);
@@ -160,7 +150,6 @@ int TIPADO_(comparaModuloNumeros) (TIPADO_(Complexo_pt) numComplexo1, TIPADO_(Co
         return 0;
 }
 
-// Funcao que compara o angulo entre dois numeros complexos
 int TIPADO_(comparaAngulosNumeros)(TIPADO_(Complexo_pt) numComplexo1, TIPADO_(Complexo_pt) numComplexo2){
     long double angulo1, angulo2;
 
@@ -195,14 +184,12 @@ void TIPADO_(atribuiNovoValorAngulo)(TIPADO_(Complexo_pt) numComplexo, double no
     *numComplexo->imag = round(TIPADO_(retornaMagnitude)(numComplexo) * sin(novoAngulo));
 }
 
-// Funcao que retorna o conjugado de um numero complexo
 TIPADO_(Complexo_pt) TIPADO_(retornaConjugado)(TIPADO_(Complexo_pt) numComplexo){
     TIPADO_(Complexo_pt) conjugado = TIPADO_(copiaComplexo)(numComplexo);
     *conjugado->imag *= -1;
     return conjugado;
 }
 
-// Funcao que realiza operacao de soma entre dois numeros complexos 
 TIPADO_(Complexo_pt) TIPADO_(somaComplexo)(TIPADO_(Complexo_pt) numComplexo1, TIPADO_(Complexo_pt) numComplexo2){
     TIPADO_(Complexo_pt) resultado;
     resultado = TIPADO_(criaComplexo)(0, 0);
@@ -213,7 +200,6 @@ TIPADO_(Complexo_pt) TIPADO_(somaComplexo)(TIPADO_(Complexo_pt) numComplexo1, TI
     return resultado;
 }
 
-// Funcao que realiza operacao de subtracao entre dois numeros complexos
 TIPADO_(Complexo_pt) TIPADO_(subtraiComplexo)(TIPADO_(Complexo_pt) numComplexo1, TIPADO_(Complexo_pt) numComplexo2){
     TIPADO_(Complexo_pt) resultado;
     resultado = TIPADO_(criaComplexo)(0, 0);
@@ -224,7 +210,6 @@ TIPADO_(Complexo_pt) TIPADO_(subtraiComplexo)(TIPADO_(Complexo_pt) numComplexo1,
     return resultado;
 }
 
-// Funcao que realiza operacao de divisao entre dois numeros complexo
 TIPADO_(Complexo_pt) TIPADO_(divideComplexo)(TIPADO_(Complexo_pt) numComplexo1, TIPADO_(Complexo_pt) numComplexo2){
     TIPADO_(Complexo_pt) resultado;
     resultado = TIPADO_(criaComplexo)(0, 0);
@@ -244,7 +229,6 @@ TIPADO_(Complexo_pt) TIPADO_(divideComplexo)(TIPADO_(Complexo_pt) numComplexo1, 
     return resultado;
 }
 
-// Funcao que realiza operacao de multiplicacao entre dois numeros complexos
 TIPADO_(Complexo_pt) TIPADO_(multiplicaComplexo)(TIPADO_(Complexo_pt) numComplexo1, TIPADO_(Complexo_pt) numComplexo2){
     TIPADO_(Complexo_pt) resultado;
     resultado = TIPADO_(criaComplexo)(0, 0);
@@ -255,13 +239,11 @@ TIPADO_(Complexo_pt) TIPADO_(multiplicaComplexo)(TIPADO_(Complexo_pt) numComplex
     return resultado;
 }
 
-// Funcao que acumula o valor de um numero complexo em outro, somando
 void TIPADO_(acumulaSomando)(TIPADO_(Complexo_pt) numComplexo1, TIPADO_(Complexo_pt) numComplexo2){
     *numComplexo1->real += *numComplexo2->real;
     *numComplexo1->imag += *numComplexo2->imag;
 }
 
-// Funcao que acumula o valor de um numero complexo em outro, multiplicando
 void TIPADO_(acumulaMultiplicando)(TIPADO_(Complexo_pt) numComplexo1, TIPADO_(Complexo_pt) numComplexo2){
 
     TIPO_ copiaReal = *numComplexo1->real;
@@ -270,7 +252,6 @@ void TIPADO_(acumulaMultiplicando)(TIPADO_(Complexo_pt) numComplexo1, TIPADO_(Co
     *numComplexo1->imag = (copiaReal * *numComplexo2->imag) + (copiaImag * *numComplexo2->real);
 }
 
-// Funcao que realiza a operacao de acordo com o parametro passado
 TIPADO_(Complexo_pt) TIPADO_(operacaoComplexo)(TIPADO_(Complexo_pt) numComplexo1, TIPADO_(Complexo_pt) numComplexo2, char *operacao){
 
     if (strcmp(operacao, "+") == 0){
