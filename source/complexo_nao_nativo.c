@@ -73,7 +73,6 @@ R_Complexo_pt R_copiaComplexo(R_Complexo_pt numComplexo){
     return copia;
 }
 
-// isso deve restornar racional ou real??? Mudei pra double
 double R_retornaMagnitude(R_Complexo_pt numComplexo){
     double real, imag, modulo;
 
@@ -83,21 +82,10 @@ double R_retornaMagnitude(R_Complexo_pt numComplexo){
     modulo = pow(real, 2) + pow(imag, 2);
 
     modulo = sqrt(modulo); 
-        
-    /*Racional_pt real, imag, modulo;
-    modulo = criaNumRacional(0, 1);
-    real = elevaAoQuadrado(numComplexo->real);
-    imag = elevaAoQuadrado(numComplexo->imag);
-    modulo = somaRacionais(real, imag);
-    
-    atribuiNovoValor(modulo, sqrt(retornaNum(modulo)), sqrt(retornaDen(modulo)));
-    //modulo->num = sqrt(modulo->num);
-    //modulo->den = sqrt(modulo->den);*/
 
     return modulo;
 }
 
-// isso deve restornar racional ou real???
 double R_retornaFase(R_Complexo_pt numComplexo){
     double angulo, realDouble, imagDouble, magDouble;
     Racional_pt real, imag;
@@ -142,7 +130,6 @@ int R_verificaModuloZero(R_Complexo_pt numComplexo){
         return 0;
 }
 
-// sera que se for real = 0 e imag = 0 essa funcao deveria retornar true?
 int R_verificaApenasReal(R_Complexo_pt numComplexo){
     Racional_pt real, imag;
     real = R_retornaReal(numComplexo);
@@ -213,7 +200,6 @@ void R_atribuiNovoValorModulo(R_Complexo_pt numComplexo, double novoModulo){
     R_atribuiNovoValorReal(numComplexo, converteRealEmRacional(real));
     R_atribuiNovoValorImaginario(numComplexo, converteRealEmRacional(imag));
 }
-
 
 void R_atribuiNovoValorAngulo(R_Complexo_pt numComplexo, double novoAngulo){
     double modulo, real, imag;
