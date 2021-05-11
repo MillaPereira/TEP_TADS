@@ -206,7 +206,6 @@ int TIPADO_(quantElementosDeValorV)(TIPADO_(Vetor_pt) vetor, TIPADO2_(Complexo_p
 }
 
 int *TIPADO_(retornaVetorComPosicoesQueTemV)(TIPADO_(Vetor_pt) vetor, TIPADO2_(Complexo_pt) valor){
-  TIPADO2_(Complexo_pt) valor){
   int n = 0;
   int *elementos;
   for(int i = 0; i < TIPADO_(retornaNumeroAtualElementos)(vetor); i++){
