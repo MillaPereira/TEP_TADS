@@ -45,8 +45,8 @@ void R_destroiComplexo(R_Complexo_pt numComplexo){
 }
 
 void R_imprimeComplexo(R_Complexo_pt numComplexo){
-    printf("Real: %ld/%ld\n", retornaNum(numComplexo->real), retornaDen(numComplexo->real));
-    printf("Imag: %ld/%ld\n", retornaNum(numComplexo->imag), retornaDen(numComplexo->imag));
+    printf("%ld/%ld + ", retornaNum(numComplexo->real), retornaDen(numComplexo->real));
+    printf("%ld/%ld\n", retornaNum(numComplexo->imag), retornaDen(numComplexo->imag));
 }
 
 Racional_pt R_retornaReal(R_Complexo_pt numComplexo){
