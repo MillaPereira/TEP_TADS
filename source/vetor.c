@@ -5,7 +5,7 @@
 #define eps 0.00001
 
 struct TIPADO_(Vetor_st){
-	  int n; // numero de elementos atual
+    int n; // numero de elementos atual
     int N; // numero máximo de elementos
     int i;
     TIPO_ *elementos;
@@ -13,8 +13,7 @@ struct TIPADO_(Vetor_st){
 
 typedef struct TIPADO_(Vetor_st) TIPADO_(Vetor_t);
 
-// O WHILE SERIA AQUI 
-void TIPADO_(realocaEspaco)(TIPADO_(Vetor_pt) vetor){ //acho que isso pode ficar dentro da funcao de criar vetor
+void TIPADO_(realocaEspaco)(TIPADO_(Vetor_pt) vetor){
   if(vetor->n >= vetor->N){
     vetor->elementos = (TIPO_*) realloc(vetor->elementos, 2 * vetor->n * sizeof(TIPO_));
     vetor->N *= 2;
@@ -25,7 +24,7 @@ void TIPADO_(realocaEspaco)(TIPADO_(Vetor_pt) vetor){ //acho que isso pode ficar
   }
 }
 
-TIPADO_(Vetor_pt) TIPADO_(criaVetor)(int n, TIPO_ *elementos){ //Conferir essa parte com a Lara, o tamanho
+TIPADO_(Vetor_pt) TIPADO_(criaVetor)(int n, TIPO_ *elementos){
     TIPADO_(Vetor_pt) vetor = (TIPADO_(Vetor_t*)) malloc(sizeof(TIPADO_(Vetor_t)));
     vetor->elementos = (TIPO_*) malloc(100 * sizeof(TIPO_));
     
@@ -145,7 +144,7 @@ void TIPADO_(adicionaElemento)(TIPADO_(Vetor_pt) vetor, TIPO_ valor){
     TIPADO_(realocaEspaco)(vetor);
 }
 
-void TIPADO_(eliminaElementoDePosicaoI)(TIPADO_(Vetor_pt) vetor, int indice){ //Revisar o significado dessa funcao
+void TIPADO_(eliminaElementoDePosicaoI)(TIPADO_(Vetor_pt) vetor, int indice){
     for(int c = indice; c < vetor->n; c++){
         vetor->elementos[c] = vetor->elementos[c+1];
     }
@@ -194,7 +193,6 @@ int TIPADO_(quantElementosDeValorV)(TIPADO_(Vetor_pt) vetor, TIPO_ valor){
     return quant;
 }
 
-//VERIFICAR RETORNO COM A LARA
 TIPADO_(Vetor_pt) TIPADO_(retornaVetorComPosicoesQueTemV)(TIPADO_(Vetor_pt) vetor, TIPO_ valor){
     TIPADO_(Vetor_pt) vetorComPosicoes;
     int n = 0;
@@ -219,7 +217,7 @@ TIPADO_(Vetor_pt) TIPADO_(retornaVetorComPosicoesQueTemV)(TIPADO_(Vetor_pt) veto
     return vetorComPosicoes;
 }
 
-int TIPADO_(criterioOrdenacao) (const void * a, const void * b){ // Compara os de conteúdos "a" e "b" e retorna para a função qsort se "a" é maior, menor ou igual que "b"
+int TIPADO_(criterioOrdenacao) (const void * a, const void * b){
 
   if (*(TIPO_*)a == *(TIPO_*)b){
     return 0; // Iguais
@@ -269,7 +267,7 @@ TIPADO_(Vetor_pt) TIPADO_(somaVetores)(TIPADO_(Vetor_pt) vetor1, TIPADO_(Vetor_p
     vetorNovo->elementos[i] += vetor2->elementos[i];
   }
   return vetorNovo;
-} // lara
+}
 
 TIPO_ TIPADO_(produtoInternoVetores) (TIPADO_(Vetor_pt) vetor1, TIPADO_(Vetor_pt) vetor2){
   TIPO_ produtoInterno = 0;
@@ -297,7 +295,7 @@ TIPADO_(Vetor_pt) TIPADO_(subtraiVetores)(TIPADO_(Vetor_pt) vetor1, TIPADO_(Veto
     vetorNovo->elementos[i] -= vetor2->elementos[i];
   }
   return vetorNovo;
-} //lara
+}
 
 void TIPADO_(multiplicaVetorPorEscalar)(TIPADO_(Vetor_pt) vetor, double escalar){
   for (int i = 0; i < vetor->n; i++){
@@ -342,7 +340,6 @@ double TIPADO_(desvioPadrao) (TIPADO_(Vetor_pt) vetor){
   return DP;
 }
 
-//Fiz do jeito "burro" porque nao entendi muito bem o metodo no link que o Saulo colocou no arquivo, depois vou tentar ver melhor
 double TIPADO_(medianaVetor) (TIPADO_(Vetor_pt) vetor){
    TIPADO_(ordenarVetor)(vetor);
   double mediana = 0;
@@ -355,38 +352,6 @@ double TIPADO_(medianaVetor) (TIPADO_(Vetor_pt) vetor){
   return mediana;
 }
 
-/*int i;
-  TIPO_ a, S2;
-  void *S1, *S3;
-  if(vetor->n == 1){
-    return vetor->elementos[0];
-  }
-  else{
-    i = rand() % vetor->n;
-    a = vetor->elementos[i];
-    for(int c = 0; c < vetor->n; c++){
-      if(vetor->elementos[c] < a){
-        S1 += vetor->elementos[c];
-      }
-      if(vetor->elementos[c] == a){
-        S2 += vetor->elementos[c];
-      }
-      if(vetor->elementos[c] > a){
-        S3 += vetor->elementos[c];
-      }
-    }
-    if(fabsl(S1) >= k){
-      return medianaVetor(S1, TIPADO_(valorDeMenorModulo(S1))); 
-    }
-    else{
-      if(fabsl(S1) + fabsl(S2) >= k){
-        return a;
-      }
-      else{
-        return medianaVetor(S3, TIPADO_(valorDeMenorModulo(S3)));
-      }
-    }
-  }*/
 #endif
 #endif
 #endif
