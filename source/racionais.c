@@ -130,8 +130,7 @@ Racional_pt somaRacionais(Racional_pt valor1, Racional_pt valor2){
 
     resultado->num = (valor1->num * valor2->den) + (valor1->den * valor2->num);
     resultado->den = (valor1->den * valor2->den);
-    
-    // simplificando resultado 
+     
     simplificaRacional(resultado);
     return resultado;
 }
@@ -141,7 +140,6 @@ void acumulaRacional(Racional_pt valor1, Racional_pt valor2){
     valor1->num = (valor1->num * valor2->den) + (valor1->den * valor2->num);
     valor1->den = (valor1->den * valor2->den);
 
-    // simplificando o resultado 
     simplificaRacional(valor1);
 }
 
@@ -152,7 +150,6 @@ Racional_pt subtraiRacionais(Racional_pt valor1, Racional_pt valor2){
     resultado->num = (valor1->num * valor2->den) - (valor1->den * valor2->num);
     resultado->den = (valor1->den * valor2->den);
 
-    // simplificando o resultado 
     simplificaRacional(resultado);
     return resultado;
 }
@@ -164,7 +161,6 @@ Racional_pt multiplicaRacionais(Racional_pt valor1, Racional_pt valor2){
     resultado->num = (valor1->num * valor2->num);
     resultado->den = (valor1->den * valor2->den);
 
-    // simplificando o resultado 
     simplificaRacional(resultado);
     return resultado;
 }
@@ -172,8 +168,7 @@ Racional_pt multiplicaRacionais(Racional_pt valor1, Racional_pt valor2){
 void acumulaMultiplicacaoRacionais(Racional_pt valor1, Racional_pt valor2){
     valor1->num *= valor2->num;
     valor1->den *= valor2->den;
-    
-    //simplificando resultado 
+
     simplificaRacional(valor1);
 }
 
@@ -184,14 +179,13 @@ Racional_pt divideRacionais(Racional_pt valor1, Racional_pt valor2){
     resultado->num = (valor1->num * valor2->den);
     resultado->den = (valor1->den * valor2->num);
 
-    // simplificando resultado
     simplificaRacional(resultado);
     return resultado;
 }
 
 Racional_pt elevaAoQuadrado(Racional_pt valor){
     Racional_pt resultado = multiplicaRacionais(valor, valor);
-    // simplificando resultado 
+   
     simplificaRacional(resultado);
     return resultado;
     return multiplicaRacionais(valor, valor);
@@ -217,8 +211,7 @@ double converteRacionalEmReal(Racional_pt numRacional){
     numReal = numerador / denominador;
     return numReal;
 }
-
-// verificar se eh isso mesmo 
+ 
 Racional_pt converteRealEmRacional(double numReal){
     Racional_pt numRacional;
     numRacional = criaNumRacional(numReal*1000000, 1000000);
