@@ -44,7 +44,7 @@ I_Complexo_pt converteRacionalParaLongInt(R_Complexo_pt rComplexo){
     return iComplexo;
 }
 
-R_Complexo_pt converteLongIntPataRacional(I_Complexo_pt iComplexo){
+R_Complexo_pt converteLongIntParaRacional(I_Complexo_pt iComplexo){
     double r = I_retornaReal(iComplexo);
     double i = I_retornaImaginario(iComplexo);
     Racional_pt real = converteRealEmRacional(r);
