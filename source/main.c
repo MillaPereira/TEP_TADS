@@ -213,13 +213,13 @@ int main(void) {
   printf("\nDestruindo complexos... \n");
   I_destroiComplexo(complexoLI1);
   I_destroiComplexo(complexoLI2);
-  //I_destroiComplexo(iComplexo);
+  I_destroiComplexo(iComplexo);
   D_destroiComplexo(complexoD1);
   D_destroiComplexo(complexoD2);
-  //D_destroiComplexo(dComplexo);
+  D_destroiComplexo(dComplexo);
   R_destroiComplexo(complexoR1);
   R_destroiComplexo(complexoR2);
-  //R_destroiComplexo(rComplexo);
+  R_destroiComplexo(rComplexo);
 
   printf ("\n\n===== TESTE COM VETORES NATIVOS =====\n\n");
 
