@@ -270,6 +270,10 @@ int main(void) {
   printf ("\nVariancia de vetor 1: ");
   valor = D_varianciaVetor(vetor1);
   printf ("%.3lf", valor);
+  
+  printf ("\nDesvio padrao do vetor 1: ");
+  valor = D_desvioPadrao(vetor1);
+  printf ("%.3lf", valor);
 
   printf ("\nMediana do vetor 1: ");
   valor = D_medianaVetor(vetor1);
@@ -350,6 +354,10 @@ int main(void) {
 
   printf ("\nVariancia de vetor 1: ");
   valorCompl = VCD_varianciaVetor(vetorCompl1);
+  printf ("%.3lf", valorCompl);
+  
+  printf ("\nDesvio padrao do vetor 1: ");
+  valorCompl = VCD_desvioPadrao(vetorCompl1);
   printf ("%.3lf", valorCompl);
 
   printf ("\nMediana do vetor 1: ");
