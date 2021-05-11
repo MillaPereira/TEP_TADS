@@ -67,6 +67,7 @@ int main(void) {
   printf ("\nDestruindo racionais...\n");
   destroiRacional(numRacional1);
   destroiRacional(numRacional2);
+  destroiRacional(numRacional3);
   destroiRacional(resultRacional);
 
   printf ("\n\n===== TESTE COM COMPLEXOS NATIVOS =====\n\n");
