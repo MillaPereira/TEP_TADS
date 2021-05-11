@@ -328,6 +328,7 @@ double TIPADO_(varianciaVetor) (TIPADO_(Vetor_pt) vetor){
 double TIPADO_(desvioPadrao) (TIPADO_(Vetor_pt) vetor){
   double DP;
   DP = sqrt(TIPADO_(varianciaVetor(vetor)));
+  return DP;
 }
 
 double TIPADO_(medianaVetor) (TIPADO_(Vetor_pt) vetor){
