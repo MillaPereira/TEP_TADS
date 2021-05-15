@@ -1,6 +1,7 @@
 #ifndef COMPLEXO_H
 #define COMPLEXO_H
 
+/*Definicao do ponteiro para complexo*/
 typedef struct TIPADO_(Complexo_st) * TIPADO_(Complexo_pt);
 
 TIPADO_(Complexo_pt) TIPADO_(criaComplexo)(TIPO_ numReal, TIPO_ numImag);

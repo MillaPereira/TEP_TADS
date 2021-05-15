@@ -11,8 +11,8 @@ typedef struct Racional_st{
 } Racional_t;
 
 struct R_Complexo_st{
-	Racional_pt real;
-  Racional_pt imag;
+    Racional_pt real;
+    Racional_pt imag;
 };
 
 typedef struct R_Complexo_st R_Complexo_t;
@@ -46,7 +46,7 @@ void R_destroiComplexo(R_Complexo_pt numComplexo){
 
 void R_imprimeComplexo(R_Complexo_pt numComplexo){
     printf("%ld/%ld + ", retornaNum(numComplexo->real), retornaDen(numComplexo->real));
-    printf("%ld/%ld\n", retornaNum(numComplexo->imag), retornaDen(numComplexo->imag));
+    printf("%ld/%ldi\n", retornaNum(numComplexo->imag), retornaDen(numComplexo->imag));
 }
 
 Racional_pt R_retornaReal(R_Complexo_pt numComplexo){
@@ -81,7 +81,7 @@ double R_retornaMagnitude(R_Complexo_pt numComplexo){
 
     modulo = pow(real, 2) + pow(imag, 2);
 
-    modulo = sqrt(modulo); 
+    modulo = sqrt(modulo);
 
     return modulo;
 }
@@ -200,6 +200,7 @@ void R_atribuiNovoValorModulo(R_Complexo_pt numComplexo, double novoModulo){
     R_atribuiNovoValorReal(numComplexo, converteRealEmRacional(real));
     R_atribuiNovoValorImaginario(numComplexo, converteRealEmRacional(imag));
 }
+
 
 void R_atribuiNovoValorAngulo(R_Complexo_pt numComplexo, double novoAngulo){
     double modulo, real, imag;
