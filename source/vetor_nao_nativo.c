@@ -1,8 +1,8 @@
 #ifdef TIPO_ //Complexo_pt
-#ifdef TIPADO_ // VCI_() ou VCD_()
-#ifdef TIPO2_ // long int ou double
-#ifdef TIPADO2_ // I_() ou D_()
-#ifdef FORMATO2_ //ld ou lf
+#ifdef TIPADO_ // VCI_()
+#ifdef TIPO2_ // long int 
+#ifdef TIPADO2_ // I_()
+#ifdef FORMATO2_
 
 struct TIPADO_(Vetor_st){
   int n; // numero de elementos atual
@@ -43,6 +43,7 @@ TIPADO_(Vetor_pt) TIPADO_(criaVetor)(int n){
   vetor->N = 100;
   vetor->i = 0;
   for(int c = 0; c < vetor->N; c++){
+    //*(vetor->elementos+c) = (TIPADO2_(Complexo_t)*) malloc(sizeof(TIPADO2_(Complexo_t)));
     *(vetor->elementos+c) = NULL;
   }
 
@@ -218,7 +219,7 @@ int *TIPADO_(retornaVetorComPosicoesQueTemV)(TIPADO_(Vetor_pt) vetor, TIPADO2_(C
   return elementos;
 }
 
-int TIPADO_(criterioOrdenacao) (const void * a, const void * b){
+int TIPADO_(criterioOrdenacao) (const void * a, const void * b){ // Compara os de conteúdos "a" e "b" e retorna para a função qsort se "a" é maior, menor ou igual que "b"
   if (TIPADO2_(retornaMagnitude)(*(TIPO_*)a) == TIPADO2_(retornaMagnitude)(*(TIPO_*)b)){
     return 0; // Iguais
   }
@@ -328,7 +329,6 @@ double TIPADO_(varianciaVetor) (TIPADO_(Vetor_pt) vetor){
 double TIPADO_(desvioPadrao) (TIPADO_(Vetor_pt) vetor){
   double DP;
   DP = sqrt(TIPADO_(varianciaVetor(vetor)));
-  return DP;
 }
 
 double TIPADO_(medianaVetor) (TIPADO_(Vetor_pt) vetor){
