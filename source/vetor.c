@@ -5,7 +5,7 @@
 #define eps 0.00001
 
 struct TIPADO_(Vetor_st){
-    int n; // numero de elementos atual
+	  int n; // numero de elementos atual
     int N; // numero máximo de elementos
     int i;
     TIPO_ *elementos;
@@ -13,7 +13,8 @@ struct TIPADO_(Vetor_st){
 
 typedef struct TIPADO_(Vetor_st) TIPADO_(Vetor_t);
 
-void TIPADO_(realocaEspaco)(TIPADO_(Vetor_pt) vetor){
+// O WHILE SERIA AQUI 
+void TIPADO_(realocaEspaco)(TIPADO_(Vetor_pt) vetor){ //acho que isso pode ficar dentro da funcao de criar vetor
   if(vetor->n >= vetor->N){
     vetor->elementos = (TIPO_*) realloc(vetor->elementos, 2 * vetor->n * sizeof(TIPO_));
     vetor->N *= 2;
@@ -24,7 +25,7 @@ void TIPADO_(realocaEspaco)(TIPADO_(Vetor_pt) vetor){
   }
 }
 
-TIPADO_(Vetor_pt) TIPADO_(criaVetor)(int n, TIPO_ *elementos){
+TIPADO_(Vetor_pt) TIPADO_(criaVetor)(int n, TIPO_ *elementos){ //Conferir essa parte com a Lara, o tamanho
     TIPADO_(Vetor_pt) vetor = (TIPADO_(Vetor_t*)) malloc(sizeof(TIPADO_(Vetor_t)));
     vetor->elementos = (TIPO_*) malloc(100 * sizeof(TIPO_));
     
@@ -121,7 +122,7 @@ TIPO_ TIPADO_(retornaUltimoElemento)(TIPADO_(Vetor_pt) vetor){
 }
 
 TIPO_ TIPADO_(retornaElementoDePosicaoI)(TIPADO_(Vetor_pt) vetor, int indice){
-  if(indice >= vetor->n || indice < 0){
+  if(indice >= TIPADO_(retornaNumeroAtualElementos)(vetor) || indice < 0){
     printf("Nao Existe\n");
     exit(1);
   }
@@ -130,7 +131,7 @@ TIPO_ TIPADO_(retornaElementoDePosicaoI)(TIPADO_(Vetor_pt) vetor, int indice){
 }
 
 void TIPADO_(atribuirValorNaIesimaPosicao)(TIPADO_(Vetor_pt) vetor, int indice, TIPO_ valor){
-  if(indice >= vetor->n || indice < 0){
+  if(indice >= TIPADO_(retornaNumeroAtualElementos)(vetor) || indice < 0){
     printf("Nao Existe\n");
     exit(1);
   }
@@ -144,7 +145,7 @@ void TIPADO_(adicionaElemento)(TIPADO_(Vetor_pt) vetor, TIPO_ valor){
     TIPADO_(realocaEspaco)(vetor);
 }
 
-void TIPADO_(eliminaElementoDePosicaoI)(TIPADO_(Vetor_pt) vetor, int indice){
+void TIPADO_(eliminaElementoDePosicaoI)(TIPADO_(Vetor_pt) vetor, int indice){ //Revisar o significado dessa funcao
     for(int c = indice; c < vetor->n; c++){
         vetor->elementos[c] = vetor->elementos[c+1];
     }
@@ -193,6 +194,7 @@ int TIPADO_(quantElementosDeValorV)(TIPADO_(Vetor_pt) vetor, TIPO_ valor){
     return quant;
 }
 
+//VERIFICAR RETORNO COM A LARA
 TIPADO_(Vetor_pt) TIPADO_(retornaVetorComPosicoesQueTemV)(TIPADO_(Vetor_pt) vetor, TIPO_ valor){
     TIPADO_(Vetor_pt) vetorComPosicoes;
     int n = 0;
@@ -217,7 +219,7 @@ TIPADO_(Vetor_pt) TIPADO_(retornaVetorComPosicoesQueTemV)(TIPADO_(Vetor_pt) veto
     return vetorComPosicoes;
 }
 
-int TIPADO_(criterioOrdenacao) (const void * a, const void * b){
+int TIPADO_(criterioOrdenacao) (const void * a, const void * b){ // Compara os de conteúdos "a" e "b" e retorna para a função qsort se "a" é maior, menor ou igual que "b"
 
   if (*(TIPO_*)a == *(TIPO_*)b){
     return 0; // Iguais
@@ -267,7 +269,7 @@ TIPADO_(Vetor_pt) TIPADO_(somaVetores)(TIPADO_(Vetor_pt) vetor1, TIPADO_(Vetor_p
     vetorNovo->elementos[i] += vetor2->elementos[i];
   }
   return vetorNovo;
-}
+} // lara
 
 TIPO_ TIPADO_(produtoInternoVetores) (TIPADO_(Vetor_pt) vetor1, TIPADO_(Vetor_pt) vetor2){
   TIPO_ produtoInterno = 0;
@@ -295,7 +297,7 @@ TIPADO_(Vetor_pt) TIPADO_(subtraiVetores)(TIPADO_(Vetor_pt) vetor1, TIPADO_(Veto
     vetorNovo->elementos[i] -= vetor2->elementos[i];
   }
   return vetorNovo;
-}
+} //lara
 
 void TIPADO_(multiplicaVetorPorEscalar)(TIPADO_(Vetor_pt) vetor, double escalar){
   for (int i = 0; i < vetor->n; i++){
@@ -326,10 +328,10 @@ double TIPADO_(mediaArimetica) (TIPADO_(Vetor_pt) vetor){
 double TIPADO_(varianciaVetor) (TIPADO_(Vetor_pt) vetor){
     double media = TIPADO_(mediaArimetica)(vetor);
     double variancia = 0;
-    for (int i = 0; i < vetor->n; i++){
+    for (int i = 0; i < TIPADO_(retornaNumeroAtualElementos)(vetor); i++){
       variancia += pow((vetor->elementos[i] - media), 2);
     }
-    variancia = variancia/vetor->n;
+    variancia = variancia/TIPADO_(retornaNumeroAtualElementos)(vetor);
     return variancia;
 }
 
@@ -340,6 +342,7 @@ double TIPADO_(desvioPadrao) (TIPADO_(Vetor_pt) vetor){
   return DP;
 }
 
+//Fiz do jeito "burro" porque nao entendi muito bem o metodo no link que o Saulo colocou no arquivo, depois vou tentar ver melhor
 double TIPADO_(medianaVetor) (TIPADO_(Vetor_pt) vetor){
    TIPADO_(ordenarVetor)(vetor);
   double mediana = 0;
